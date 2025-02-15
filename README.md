@@ -1,59 +1,17 @@
-# DragDrop
+Dinamik Form Elemanları: Sol menüde sürüklenebilir form elemanları oluşturuldu.
+Tablo Alanı: Sağ tarafta form elemanlarının bırakılabileceği bir 5x5 tablo yapısı hazırlandı.
+Drag & Drop İşlemleri: CDK DragDropModule kullanılarak sürükleme ve bırakma işlemleri implemente edildi.
+Görsellik: Bir eleman sürüklenmeye başladığında, tablo dotted (noktalı) çerçeve ile görünür hale getirildi.
+Form Kontrolü:
+Eleman tabloya bırakıldığında dinamik bir şekilde formControl oluşturuldu.
+Hangi hücreye hangi eleman ve hangi değer bırakıldığı form'a set edildi.
+API’ye Gönderme: Tabloda en az bir element olduğunda "API'ye Gönder" butonu otomatik olarak görünür hale getirildi.
+Eleman Silme:
+Her bir eklenen element silinebilir hale getirildi.
+Tabloda hiçbir element kalmadığında hem tablo hem de buton gizlendi.
+Üstüne Bırakma: Hücrede zaten bir element varken, yeni bir element bırakıldığında önceki elementin yerine yeni element eklenmesi sağlandı.
+Dropdown Desteği: Ng-Select kütüphanesi kullanılarak, dropdown (seçim kutusu) desteği eklendi.
+DragElement Yapısı: Tüm form elemanlarını içeren DragElement modeli oluşturuldu.
+Boş Tablo Yapısı: İlk açılışta 5x5 boş bir tablo oluşturuldu.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.6.
-
-## Development server
-
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+arge + bugfix + kodu yazma sürelerimle birlikte toplam 11 saat sürdü. 
