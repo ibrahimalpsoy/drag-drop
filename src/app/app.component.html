@@ -1,0 +1,74 @@
+<div class="d-flex vh-100">
+  <!-- Sol Menü -->
+  <div class="p-3 border-end bg-light" style="width: 300px;">
+    <h5>Form Elemanları</h5>
+    <div class="d-flex flex-column gap-2" cdkDropList [cdkDropListData]="dragElements">
+
+      @for (element of dragElements; track element.type) {
+      <div class="p-2 border bg-white rounded" draggable="true" (dragstart)="onDragStart($event, element.type)"
+        (dragend)="onDragEnd()" [ngStyle]="{'cursor': 'pointer'}">
+        {{ element.label }}
+      </div>
+      }
+    </div>
+  </div>
+
+  <!-- Sağdaki Dinamik Tablonun Bulunduğu Alan -->
+  <div class="flex-grow-1 p-3 d-flex flex-column">
+    <h5>Dinamik Tablo</h5>
+    <div class="table-responsive flex-grow-1">
+      <form [formGroup]="form">
+        <table class="table table-bordered text-center w-100" [class.d-none]="!isTableVisible" [ngStyle]="{
+            'border': isDragging ? '3px dotted red' : '1px solid transparent',
+            'transition': 'border 0.2s ease-in-out'
+          }" (dragover)="onDragOverTable()">
+          <tbody>
+            @for (row of tableData; track $index; let rowIndex = $index) {
+            <tr>
+              @for (cell of row; track $index; let colIndex = $index) {
+              <td class="dropzone align-middle text-center" style="height: 60px;" [ngStyle]="{
+                'border': isDragging ? '2px dotted red' : '1px solid transparent',
+                'transition': 'border 0.2s ease-in-out'
+              }" (dragover)="allowDrop($event)" (dragenter)="onDragEnter()" (dragleave)="onDragLeave()"
+                (drop)="onDrop($event, rowIndex, colIndex)">
+                @if (cell) {
+                <div class="d-flex align-items-center justify-content-between gap-2 w-100 h-100">
+                  @if (cell.type === 'input') {
+                  <input type="text" class="form-control w-100 h-100"
+                    [formControlName]="'cell_' + rowIndex + '_' + colIndex">
+                  }
+                  @if (cell.type === 'select') {
+                  <ng-select class="w-100" [items]="dropdownData" bindLabel="name" bindValue="id" placeholder="Seçiniz"
+                    [formControlName]="'cell_' + rowIndex + '_' + colIndex">
+                  </ng-select>
+
+                  }
+                  @if (cell.type === 'radio') {
+                  <input type="radio" class="form-check-input mx-auto d-block"
+                    [formControlName]="'cell_' + rowIndex + '_' + colIndex">
+                  }
+                  @if (cell.type === 'checkbox') {
+                  <input type="checkbox" class="form-check-input mx-auto d-block"
+                    [formControlName]="'cell_' + rowIndex + '_' + colIndex">
+                  }
+                  <button class="btn btn-outline-danger btn-sm d-flex align-items-center"
+                    (click)="removeElement(rowIndex, colIndex)">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+                }
+              </td>
+              }
+            </tr>
+            }
+          </tbody>
+        </table>
+      </form>
+    </div>
+    <div class="d-flex justify-content-end mt-2">
+      <button class="btn btn-primary" (click)="sendToApi()" [class.d-none]="!isButtonVisible">
+        Verileri API’ye Gönder
+      </button>
+    </div>
+  </div>
+</div>
