@@ -12,6 +12,5 @@ Tabloda hiçbir element kalmadığında hem tablo hem de buton gizlendi.
 Üstüne Bırakma: Hücrede zaten bir element varken, yeni bir element bırakıldığında önceki elementin yerine yeni element eklenmesi sağlandı.
 Dropdown Desteği: Ng-Select kütüphanesi kullanılarak, dropdown desteği eklendi.
 DragElement Yapısı: Tüm form elemanlarını içeren DragElement modeli oluşturuldu.
-Boş Tablo Yapısı: İlk açılışta 5x5 boş bir tablo oluşturuldu.
 
 arge + bugfix + kodu yazma sürelerimle birlikte toplam 11 saat sürdü. 
